@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: "none";
+  background: 'none';
   box-shadow: var(--smboxShadow);
   background: white;
 }
@@ -123,14 +123,13 @@
   .w-right {
     display: flex;
     align-items: flex-start;
-    justify-content:start;
+    justify-content: start;
     transform: scale(0.7);
   }
-  .w-mainCircle{
+  .w-mainCircle {
     position: static;
   }
-  .w-backCircle{
-    left: 8rem!important;
+  .w-backCircle {
+    left: 8rem !important;
   }
-
 }
