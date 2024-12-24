@@ -2,7 +2,7 @@
   "name": "portofolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "",
+  "homepage": "https://benphamdev.github.io/Profile/",
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
     "@iconscout/react-unicons": "^1.1.6",
