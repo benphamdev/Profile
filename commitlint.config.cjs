@@ -3,8 +3,13 @@ module.exports = {
     extends: [],
     rules: {
         'header-min-length': [2, 'always', 20],
-        'header-case-start-capital': [2, 'always'],
+        // 'header-case-start-capital': [2, 'always'],
+        // 'subject-full-stop': [2, 'never', '.'],
         'header-end-period': [2, 'always'],
+        'type-enum': [2, 'always', ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'build', 'ci', 'chore', 'revert']],
+        'scope-case': [2, 'always', 'lower-case'],
+        'subject-case': [2, 'always', 'sentence-case'],
+        'header-max-length': [2, 'always', 72],
     },
     plugins: [
         {
