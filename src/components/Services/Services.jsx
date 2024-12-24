@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
-import "./Services.css";
-import Card from "../Card/Card";
-import HeartEmoji from "../../img/heartemoji.png";
-import Glasses from "../../img/glasses.png";
-import Humble from "../../img/humble.png";
-import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
-import Resume from './resume.pdf';
+import React, { useContext } from "react";
+import { themeContext } from "../../Context";
+import Glasses from "../../img/glasses.png";
+import HeartEmoji from "../../img/heartemoji.png";
+import Humble from "../../img/humble.png";
+import Card from "../Card/Card";
+import Resume from "./resume.pdf";
+import "./Services.css";
 
 const Services = () => {
-  // context
-  const theme = useContext(themeContext);
-  const darkMode = theme.state.darkMode;
+  // Context for theme
+  const {
+    state: { darkMode },
+  } = useContext(themeContext);
 
-  // transition
+  // Transition settings
   const transition = {
     duration: 1,
     type: "spring",
@@ -21,36 +22,34 @@ const Services = () => {
 
   return (
     <div className="services" id="services">
-      {/* left side */}
+      {/* Left section */}
       <div className="awesome">
-        {/* dark mode */}
-        <span style={{ color: darkMode ? "white" : "" }}>My Awesome</span>
-        <span>services</span>
-        <spane>
-          Lorem ispum is simpley dummy text of printing of printing Lorem
+        <span style={{ color: darkMode ? "white" : "" }}>My Expertise</span>
+        <span>DevOps & SysAdmin Services</span>
+        <span>
+          Empowering businesses with reliable infrastructure, automated workflows, and optimized systems.
           <br />
-          ispum is simpley dummy text of printing
-        </spane>
+          Combining expertise in Linux, cloud platforms, and automation tools to ensure high availability and
+          scalability.
+        </span>
         <a href={Resume} download>
           <button className="button s-button">Download CV</button>
         </a>
         <div className="blur s-blur1" style={{ background: "#ABF1FF94" }}></div>
       </div>
-      {/* right */}
+
+      {/* Right section */}
       <div className="cards">
-        {/* first card */}
-        <motion.div
-          initial={{ left: "25rem" }}
-          whileInView={{ left: "14rem" }}
-          transition={transition}
-        >
+        {/* Infrastructure Management card */}
+        <motion.div initial={{ left: "25rem" }} whileInView={{ left: "14rem" }} transition={transition}>
           <Card
             emoji={HeartEmoji}
-            heading={"Design"}
-            detail={"Figma, Sketch, Photoshop, Adobe Illustrator, Adobe xd"}
+            heading="Infrastructure Management"
+            detail="Linux, Docker, Kubernetes, AWS, Azure, GCP"
           />
         </motion.div>
-        {/* second card */}
+
+        {/* Automation & CI/CD card */}
         <motion.div
           initial={{ left: "-11rem", top: "12rem" }}
           whileInView={{ left: "-4rem" }}
@@ -58,11 +57,12 @@ const Services = () => {
         >
           <Card
             emoji={Glasses}
-            heading={"Developer"}
-            detail={"Html, Css, JavaScript, React, Nodejs, Express"}
+            heading="Automation & CI/CD"
+            detail="Ansible, Jenkins, GitHub Actions, Terraform, Bash, Python"
           />
         </motion.div>
-        {/* 3rd */}
+
+        {/* System Monitoring & Security card */}
         <motion.div
           initial={{ top: "19rem", left: "25rem" }}
           whileInView={{ left: "12rem" }}
@@ -70,17 +70,14 @@ const Services = () => {
         >
           <Card
             emoji={Humble}
-            heading={"UI/UX"}
-            detail={
-              "Lorem ispum dummy text are usually use in section where we need some random text"
-            }
+            heading="Monitoring & Security"
+            detail="Prometheus, Grafana, ELK Stack, Firewall Configurations, VPN, Security Audits"
             color="rgba(252, 166, 31, 0.45)"
           />
         </motion.div>
-        <div
-          className="blur s-blur2"
-          style={{ background: "var(--purple)" }}
-        ></div>
+
+        {/* Decorative blur */}
+        <div className="blur s-blur2" style={{ background: "var(--purple)" }}></div>
       </div>
     </div>
   );

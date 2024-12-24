@@ -1,7 +1,7 @@
 import React from "react";
-import "./Testimonial.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./Testimonial.css";
 
 import { Pagination } from "swiper";
 import "swiper/css/pagination";
@@ -15,22 +15,22 @@ const Testimonial = () => {
     {
       img: profilePic1,
       review:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex officiis molestiae quod tempora laudantium, cumque error a nisi placeat quae exercitationem, maiores reiciendis! Eaque dicta minima, iure maiores dolorum sed.",
+        "Exceptional service and unparalleled expertise! The team went above and beyond to meet our needs and deliver outstanding results. Highly recommend their work.",
     },
     {
       img: profilePic2,
       review:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex officiis molestiae quod tempora laudantium, cumque error a nisi placeat quae exercitationem, maiores reiciendis! Eaque dicta minima, iure maiores dolorum sed.",
+        "A fantastic experience from start to finish! Their attention to detail and dedication to quality made all the difference in achieving our goals.",
     },
     {
       img: profilePic3,
       review:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex officiis molestiae quod tempora laudantium, cumque error a nisi placeat quae exercitationem, maiores reiciendis! Eaque dicta minima, iure maiores dolorum sed.",
+        "Truly a pleasure to work with. Their innovative approach and commitment to excellence set them apart from the competition.",
     },
     {
       img: profilePic4,
       review:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex officiis molestiae quod tempora laudantium, cumque error a nisi placeat quae exercitationem, maiores reiciendis! Eaque dicta minima, iure maiores dolorum sed.",
+        "Professional, reliable, and results-driven. They consistently exceed expectations and deliver value with every project. We couldn’t be happier with the outcome.",
     },
   ];
 
@@ -40,9 +40,8 @@ const Testimonial = () => {
         <span>Clients always get </span>
         <span>Exceptional Work </span>
         <span>from me...</span>
-      <div className="blur t-blur1" style={{ background: "var(--purple)" }}></div>
-      <div className="blur t-blur2" style={{ background: "skyblue" }}></div>
-
+        <div className="blur t-blur1" style={{ background: "var(--purple)" }}></div>
+        <div className="blur t-blur2" style={{ background: "skyblue" }}></div>
       </div>
       <Swiper
         // install Swiper modules
