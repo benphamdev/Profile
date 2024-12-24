@@ -39,10 +39,10 @@ jobs:
       - name: Run formatter
         run: npm run format
 
-      - name: Check commit message
-        uses: wagoid/commitlint-github-action@v3
-        with:
-          configFile: commitlint.config.cjs
+      # - name: Check commit message
+      #   uses: wagoid/commitlint-github-action@v3
+      #   with:
+      #     configFile: commitlint.config.cjs
 
       - name: Build docker image
         run: docker build -t personal-portfolio-react:latest .

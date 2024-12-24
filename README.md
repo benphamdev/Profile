@@ -73,3 +73,9 @@ npm run lint:fix
 npx husky install
 npx husky add .husky/pre-commit "npx lint-staged"
 npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+
+example commit
+
+git commit -m "fix(ci/cd): Fix dependency conflicts in CI/CD pipeline.
+
+Updated the CI/CD pipeline to use --legacy-peer-deps flag with npm ci to resolve dependency conflicts."
