@@ -1,13 +1,13 @@
-import { motion } from "framer-motion";
-import React, { useContext } from "react";
-import { Link } from "react-scroll";
-import { themeContext } from "../../Context";
-import Amazon from "../../img/amazon.png";
-import Facebook from "../../img/Facebook.png";
-import Fiverr from "../../img/fiverr.png";
-import Shopify from "../../img/Shopify.png";
-import Upwork from "../../img/Upwork.png";
-import "./Works.css";
+import { motion } from 'framer-motion';
+import React, { useContext } from 'react';
+import { Link } from 'react-scroll';
+import { themeContext } from '../../Context';
+import Amazon from '../../img/amazon.png';
+import Facebook from '../../img/Facebook.png';
+import Fiverr from '../../img/fiverr.png';
+import Shopify from '../../img/Shopify.png';
+import Upwork from '../../img/Upwork.png';
+import './Works.css';
 const Works = () => {
   // context
   const theme = useContext(themeContext);
@@ -20,21 +20,27 @@ const Works = () => {
       <div className="w-left">
         <div className="awesome">
           {/* dark Mode */}
-          <span style={{ color: darkMode ? "white" : "" }}>Works for All these</span>
+          <span style={{ color: darkMode ? 'white' : '' }}>
+            Works for All these
+          </span>
           <span>Brands & Clients</span>
           <spane>
-            Our partnerships span various industries, reflecting our commitment to quality, innovation, and
-            excellence in every project.
+            Our partnerships span various industries, reflecting our commitment
+            to quality, innovation, and excellence in every project.
             <br />
-            We pride ourselves on building strong, long-lasting relationships that drive success for both our
-            clients and their brands.
+            We pride ourselves on building strong, long-lasting relationships
+            that drive success for both our clients and their brands.
             <br />
-            Explore how we create impactful solutions tailored to the unique needs of our valued partners.
+            Explore how we create impactful solutions tailored to the unique
+            needs of our valued partners.
           </spane>
           <Link to="contact" smooth={true} spy={true}>
             <button className="button s-button">Hire Me</button>
           </Link>
-          <div className="blur s-blur1" style={{ background: "#ABF1FF94" }}></div>
+          <div
+            className="blur s-blur1"
+            style={{ background: '#ABF1FF94' }}
+          ></div>
         </div>
 
         {/* right side */}
@@ -43,8 +49,8 @@ const Works = () => {
         <motion.div
           initial={{ rotate: 45 }}
           whileInView={{ rotate: 0 }}
-          viewport={{ margin: "-40px" }}
-          transition={{ duration: 3.5, type: "spring" }}
+          viewport={{ margin: '-40px' }}
+          transition={{ duration: 3.5, type: 'spring' }}
           className="w-mainCircle"
         >
           <div className="w-secCircle">
@@ -55,7 +61,7 @@ const Works = () => {
           </div>
           <div className="w-secCircle">
             <img src={Amazon} alt="" />
-          </div>{" "}
+          </div>{' '}
           <div className="w-secCircle">
             <img src={Shopify} alt="" />
           </div>
