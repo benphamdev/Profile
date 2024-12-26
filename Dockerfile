@@ -1,4 +1,5 @@
-FROM node:20.9.0
+# Stage 1:
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -12,4 +13,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "run" "start"]
+CMD ["npm", "run", "start"]

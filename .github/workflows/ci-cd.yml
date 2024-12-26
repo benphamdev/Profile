@@ -43,18 +43,25 @@ jobs:
       #   uses: wagoid/commitlint-github-action@v3
       #   with:
       #     configFile: commitlint.config.cjs
+      - name: Set up environment variables
+        id: set-version
+        run: |
+          VERSION=$(grep -oP '"version": "\K(.*)(?=")' package.json)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION=$(grep -oP '"version": "\K(.*)(?=")' package.json)" >> $GITHUB_OUTPUT
 
       - name: Build docker image
-        run: docker build -t personal-portfolio-react:latest .
+        id: build-image
+        run: docker build -t personal-portfolio-react:${{ steps.set-version.outputs.VERSION }} .
 
       # If we do this, we don't need to build image during CD below.
       - name: Push Docker Image to Registry
         run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push personal-portfolio-react:latest
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          docker push personal-portfolio-react:${steps.build-image.outputs.VERSION}
 
   deploy:
-    name: Deploy to Heroku
+    name: Deploy to Vercel
     needs: build-and-test
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
       (github.event_name == 'pull_request' && github.event.action == 'closed') ||
@@ -82,25 +89,28 @@ jobs:
       # - name: Build docker image
       #   run: docker-compose up --build -d
 
-      - name: Pull and deploy docker image to Heroku
+      - name: Install vercel cli
+        run: npm install -g vercel
+
+      - name: Pull and deploy docker image to Vercel
         run: |
-          heroku container:login
-          heroku container:pull web personal-portfolio-react:latest
-          heroku container:release web -a personal-portfolio-react
+          vercel container:login
+          vercel container:pull web personal-portfolio-react:${{ env.VERSION }}
+          vercel container:release web -a personal-portfolio-react
 
-      - name: Login to Heroku
-        run: heroku container:login
+      - name: Login to Vercel
+        run: vercel login --token ${{ secrets.VERCEL_TOKEN }}
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
-      - name: Tag and push docker image to Heroku
+      - name: Tag and push docker image to Vercel
         run: |
-          docker tag personal-portfolio-react:latest registry.heroku.com/personal-portfolio-react/web
-          docker push registry.heroku.com/personal-portfolio-react/web
+          docker tag personal-portfolio-react:latest registry.vercel.com/personal-portfolio-react/web
+          docker push registry.vercel.com/personal-portfolio-react/web
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
-      - name: Release the image to Heroku
-        run: heroku container:release web -a personal-portfolio-react
+      - name: Release the image to Vercel
+        run: vercel container:release web -a personal-portfolio-react
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
